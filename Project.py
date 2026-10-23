@@ -5,14 +5,15 @@ codon.count('AGC')
 
 def codon_frequencies(sequence):
     codonDict = {}
-    for startIndex in range(0, len(geneSeq), 3):
-        codon = sequence[startIndex] + sequence[startIndex+1] + sequence[startIndex+2]
-        if codon not in codonDict:
-            codonDict[codon] = 1
-        else:
-            codonDict[codon] = codonDict[codon] + 1
-    sortedCodonDict = dict(sorted(codonDict.items()))
-    for k,v in sortedCodonDict.items():
-        print(k,v)
+    for startIndex in range(0, len(sequence) - 2, 3):
+        codon = sequence[startIndex:startIndex + 3]
+        codonDict[codon] = codonDict.get(codon, 0) + 1
 
-print (codon_frequencies(geneSeq))
+    return dict(sorted(codonDict.items()))
+
+with open("NC_000913_full_sequence.txt") as f:
+    dna = f.read().strip()
+
+codon_counts = codon_frequencies(dna)
+
+print(codon_counts)
