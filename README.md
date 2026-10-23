@@ -1,5 +1,5 @@
 # The6FlipACoiners muaad is smth
-print
+
 codon= ['AGC','TTT','TCA','TTC','TGA','CTG','CAA','CGG','GCA','ATA','TGT','CTC','TGA','AGC']
 codon.count('AGC')
 
@@ -13,7 +13,6 @@ def codon_frequencies(sequence):
             codonDict[codon] = codonDict[codon] + 1
     sortedCodonDict = dict(sorted(codonDict.items()))
     for k,v in sortedCodonDict.items():
-        print(k,v[detected_AMRs.tsv](https://github.com/user-attachments/files/33867765/detected_AMRs.tsv)
-)
+        print(k,v)
 
 print_codon_frequencies(geneSeq)
