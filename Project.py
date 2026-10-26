@@ -1,13 +1,22 @@
 # The6FlipACoiners muaad is smth
 
 codon= ['AGC','TTT','TCA','TTC','TGA','CTG','CAA','CGG','GCA','ATA','TGT','CTC','TGA','AGC']
+#creates list of codons
 codon.count('AGC')
-
-def codon_frequencies(sequence):
-    codonDict = {}
-    for startIndex in range(0, len(sequence) - 2, 3):
+#count the number of times AGC codon appears in the list
+def codon_frequencies(sequence): 
+#defines function, sequence is the DNA sequence passed into function
+    codonDict = {} 
+#creates an empty dictionary to store each codon and its count
+    for startIndex in range(0, len(sequence) - 2, 3): 
+#range: starts at index 0 and increases by 3 each time
+#len(sequence): gives length of gene sequence
+#startIndex: represents the start of each codon: 0, 3, 6, 9, etc.
+#the loop will run until end of sequence reached
         codon = sequence[startIndex:startIndex + 3]
+#This takes three consecutive DNA bases and joins them together to form a codon
         codonDict[codon] = codonDict.get(codon, 0) + 1
+#Counts each codon occurrence in the dictionary.
 
     return dict(sorted(codonDict.items()))
 
