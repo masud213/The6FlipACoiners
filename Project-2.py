@@ -44,7 +44,7 @@ amino_acid_codons = {
     "N":    ["AAT", "AAC"],
     "K":        ["AAA", "AAG"],
     "D": ["GAT", "GAC"],
-    "E`": ["GAA", "GAG"],
+    "E": ["GAA", "GAG"],
     "C":      ["TGT", "TGC"],
     "W":    ["TGG"],
     "R":      ["CGT", "CGC", "CGA", "CGG", "AGA", "AGG"],
