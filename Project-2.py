@@ -19,12 +19,13 @@ def codon_frequencies(sequence):
 #Counts each codon occurrence in the dictionary.
 
     return dict(sorted(codonDict.items()))
-
+#sorts codons alphabetically and returns the dictionary.
 with open("NC_000913_full_sequence.txt") as f:
+#opens the DNA sequence file (complete genome of E coli) and reads its contents.
     dna = f.read().strip()
-
+#reads the sequence and removes surrounding whitespace.
 codon_counts = codon_frequencies(dna)
-
+#calculates the frequency of each codon.
 
 
 amino_acid_codons = {
@@ -50,21 +51,34 @@ amino_acid_codons = {
     "G":       ["GGT", "GGC", "GGA", "GGG"],
     "STOP":          ["TAA", "TAG", "TGA"],
 }
+#stores each amino acid and its possible DNA codons.
 
+#codon_counts is the dictionary returned by codon_frequencies(dna)
 most_frequent_codon = {}
+#stores the most frequent codon for each amino acid.
 
 for amino_acid in amino_acid_codons:
+#goes through each amino acid in the dictionary
     best_codon = ""
+    #start with an empty string to store the most frequent codon
     best_count = 0
+    #start the highest codon count at 0
 
     for codon in amino_acid_codons[amino_acid]:
+    #goes through each codon that codes for this amino acid
         count = codon_counts.get(codon, 0)
+        #get the number of times this codon appears, if codon not in dictionary, use 0
         if count > best_count:
+        #check if this codon appears more often than the current best
             best_codon = codon
+            #if it does, save this codon as the most frequent one
             best_count = count
+            #update the highest count to this codon's count
 
     most_frequent_codon[amino_acid] = best_codon
+    #store the most frequent codon for this amino acid in the most_frequent_codon dictionary
     print(amino_acid, best_codon, best_count)
+    #print the amino acid, its most frequent codon, and how many times that codon appears
 
 # Most frequent codon for each amino acid (from the CDS-based counts)
 most_frequent_codon = {
