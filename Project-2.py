@@ -91,16 +91,21 @@ most_frequent_codon = {
 
 protein = """MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAED
 LQVGQVELGGGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLENYCN"""
+#store the insulin protein sequence as a string
 
-# Remove the line break and any spaces
+#remove line breaks and spaces, then convert to uppercase
 protein = protein.replace("\n", "").replace(" ", "").upper()
 
 dna = ""
+#create an empty string to store the DNA sequence
 for amino_acid in protein:
     dna += most_frequent_codon[amino_acid]
+#convert each amino acid into its most frequent DNA codon
 
-# Add a stop codon at the end
 dna += most_frequent_codon["STOP"]
+#add a stop codon to signal the end of protein translation
 
 print(dna)
+#print the completed DNA sequence
 print(len(protein), "amino acids ->", len(dna), "bases")
+#display the number of amino acids and DNA bases
